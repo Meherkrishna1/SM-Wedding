@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="/assets/logo.png">
   <link rel="apple-touch-icon" href="/assets/logo.png">
+  <link rel="preload" as="image" href="assets/images/hero_couple.png" fetchpriority="high">
 </head>
 <body>
 
@@ -93,11 +94,11 @@
 
   <main>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <!-- ═══════════════ HERO ═══════════════ -->
     <!-- 1. Invitation-feel hero: particles canvas, animated monogram, invitation copy -->
     <section class="hero" id="hero" aria-label="Wedding invitation hero">
       <div class="hero__bg">
-        <img src="assets/images/hero_couple.png" alt="Sowmya and Manikanta — wedding portrait" class="hero__img" id="hero-img" />
+        <img src="assets/images/hero_couple.png" alt="Sowmya and Manikanta - wedding portrait" class="hero__img" id="hero-img" fetchpriority="high" decoding="sync" />
         <div class="hero__overlay"></div>
         <img src="assets/jali-pattern.svg" alt="" class="hero__jali" aria-hidden="true" />
       </div>
@@ -164,7 +165,7 @@
         <div class="couple__profiles-row reveal">
           <div class="couple__profile-card">
             <div class="couple__profile-img-wrap">
-              <img src="assets/images/gallery_couple_portraits.png" alt="Sowmya" class="couple__profile-img" />
+              <img src="assets/images/gallery_couple_portraits.png" alt="Sowmya" class="couple__profile-img" loading="lazy" decoding="async" />
             </div>
             <h3 class="couple__profile-name">Sowmya</h3>
             <p class="couple__profile-desc">Daughter of Suribabu & Laxmi. Sowmya brings light to every room she enters. Her infectious laugh and boundless energy turned Manikanta's quiet world upside down—in the best way possible.</p>
@@ -175,7 +176,7 @@
           </div>
           <div class="couple__profile-card">
             <div class="couple__profile-img-wrap">
-              <img src="assets/images/couple_story.png" alt="Manikanta" class="couple__profile-img" />
+              <img src="assets/images/couple_story.png" alt="Manikanta" class="couple__profile-img" loading="lazy" decoding="async" />
             </div>
             <h3 class="couple__profile-name">Manikanta</h3>
             <p class="couple__profile-desc">The calm to her storm. Manikanta is a software engineer with a love for old-school romance, long drives, and finding poetry in the everyday moments.</p>
@@ -260,7 +261,7 @@
           <!-- Haldi -->
           <article class="ecard reveal" id="event-mehndi">
             <div class="ecard__img-wrap" style="position: absolute; top: 0; left: 0; right: 0; bottom: 15%; z-index: 0; aspect-ratio: auto;">
-              <img src="assets/images/gallery_mehndi.png" alt="Haldi ceremony" class="ecard__img" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" />
+              <img src="assets/images/gallery_mehndi.png" alt="Haldi ceremony" class="ecard__img" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;" />
               <div class="ecard__img-overlay" style="background: linear-gradient(to top, rgba(15,7,32,0.95) 0%, rgba(15,7,32,0.4) 50%, rgba(15,7,32,0.1) 100%);"></div>
             </div>
             <span class="ecard__number" aria-hidden="true" style="position: absolute; top: -1rem; right: -1rem; font-size: 16rem; line-height: 0.8; color: rgba(201,168,76,0.15); z-index: 1;">01</span>
@@ -278,7 +279,7 @@
           <!-- Wedding -->
           <article class="ecard reveal reveal--delay-1" id="event-wedding">
             <div class="ecard__img-wrap" style="position: absolute; top: 0; left: 0; right: 0; bottom: 15%; z-index: 0; aspect-ratio: auto;">
-              <img src="assets/images/venue_mandap.png" alt="The Wedding Ceremony" class="ecard__img" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" />
+              <img src="assets/images/venue_mandap.png" alt="The Wedding Ceremony" class="ecard__img" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;" />
               <div class="ecard__img-overlay" style="background: linear-gradient(to top, rgba(15,7,32,0.95) 0%, rgba(15,7,32,0.4) 50%, rgba(15,7,32,0.1) 100%);"></div>
             </div>
             <span class="ecard__number" aria-hidden="true" style="position: absolute; top: -1rem; right: -1rem; font-size: 16rem; line-height: 0.8; color: rgba(201,168,76,0.15); z-index: 1;">02</span>
@@ -397,31 +398,31 @@
         <div class="gallery__sticky-wrap">
           <div class="gallery__masonry" id="gallery-grid" role="list" aria-label="Wedding photo gallery">
             <figure class="gallery__item gallery__item--tall reveal" role="listitem">
-              <img src="assets/images/couple_story.png" alt="Sowmya and Manikanta — golden hour portrait" class="gallery__img" loading="lazy" />
+              <img src="assets/images/couple_story.png" alt="Sowmya and Manikanta — golden hour portrait" class="gallery__img" loading="lazy" decoding="async" />
               <div class="gallery__zoom-icon" aria-hidden="true">+</div>
             </figure>
             <figure class="gallery__item reveal" role="listitem">
-              <img src="assets/images/gallery_mehndi.png" alt="Mehndi ceremony" class="gallery__img" loading="lazy" />
+              <img src="assets/images/gallery_mehndi.png" alt="Mehndi ceremony" class="gallery__img" loading="lazy" decoding="async" />
               <div class="gallery__zoom-icon" aria-hidden="true">+</div>
             </figure>
             <figure class="gallery__item reveal reveal--delay-1" role="listitem">
-              <img src="assets/images/gallery_flowers.png" alt="Wedding floral arrangements" class="gallery__img" loading="lazy" />
+              <img src="assets/images/gallery_flowers.png" alt="Wedding floral arrangements" class="gallery__img" loading="lazy" decoding="async" />
               <div class="gallery__zoom-icon" aria-hidden="true">+</div>
             </figure>
             <figure class="gallery__item gallery__item--wide reveal reveal--delay-1" role="listitem">
-              <img src="assets/images/gallery_sangeet.png" alt="Sangeet celebration" class="gallery__img" loading="lazy" />
+              <img src="assets/images/gallery_sangeet.png" alt="Sangeet celebration" class="gallery__img" loading="lazy" decoding="async" />
               <div class="gallery__zoom-icon" aria-hidden="true">+</div>
             </figure>
             <figure class="gallery__item gallery__item--tall reveal" role="listitem">
-              <img src="assets/images/gallery_reception.png" alt="Reception hall" class="gallery__img" loading="lazy" />
+              <img src="assets/images/gallery_reception.png" alt="Reception hall" class="gallery__img" loading="lazy" decoding="async" />
               <div class="gallery__zoom-icon" aria-hidden="true">+</div>
             </figure>
             <figure class="gallery__item reveal reveal--delay-2" role="listitem">
-              <img src="assets/images/gallery_couple_portraits.png" alt="Couple portrait" class="gallery__img" loading="lazy" />
+              <img src="assets/images/gallery_couple_portraits.png" alt="Couple portrait" class="gallery__img" loading="lazy" decoding="async" />
               <div class="gallery__zoom-icon" aria-hidden="true">+</div>
             </figure>
             <figure class="gallery__item reveal reveal--delay-2" role="listitem">
-              <img src="assets/images/venue_mandap.png" alt="Wedding mandap" class="gallery__img" loading="lazy" />
+              <img src="assets/images/venue_mandap.png" alt="Wedding mandap" class="gallery__img" loading="lazy" decoding="async" />
               <div class="gallery__zoom-icon" aria-hidden="true">+</div>
             </figure>
           </div>
@@ -494,7 +495,7 @@
         <!-- Premium venue card with image background -->
         <div class="venue__card venue__card--premium reveal">
           <div class="venue__bg-wrap">
-            <img src="assets/images/venue_mandap.png" alt="Taj Lands End Wedding Venue" class="venue__bg-img" loading="lazy" />
+            <img src="assets/images/venue_mandap.png" alt="Taj Lands End Wedding Venue" class="venue__bg-img" loading="lazy" decoding="async" />
             <div class="venue__bg-overlay"></div>
           </div>
           
@@ -558,6 +559,6 @@
 
   </main>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

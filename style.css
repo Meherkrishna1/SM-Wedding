@@ -4287,7 +4287,7 @@ button, input, select, textarea {
   .ecard__title { font-size: clamp(1.5rem, 5vw, 2rem); }
   .events__grid { grid-template-columns: 1fr; }
   .gallery__scroll-track {
-    height: 300vh;
+    height: 500vh;
     position: relative;
   }
   .gallery__sticky-wrap {
@@ -4299,8 +4299,8 @@ button, input, select, textarea {
   .gallery__masonry { 
     display: flex;
     flex-wrap: nowrap;
-    gap: 16px;
-    padding-inline: 24px;
+    gap: 24px;
+    padding: 0;
     width: max-content;
     columns: unset;
     column-gap: unset;
@@ -4310,6 +4310,9 @@ button, input, select, textarea {
     flex: 0 0 80vw;
     border-radius: 24px;
     overflow: hidden;
+  }
+  .gallery__item:first-child { margin-left: 24px; }
+  .gallery__item:last-child { margin-right: 24px; }
     margin-bottom: 0;
   }
   .film__poster { aspect-ratio: 16/9; }

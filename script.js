@@ -619,6 +619,25 @@
     
     if (!track || !stickyWrap || !masonry) return;
 
+    let targetX = 0;
+    let currentX = 0;
+    let isAnimating = false;
+
+    function render() {
+      // Lerp for smooth easing
+      currentX += (targetX - currentX) * 0.05;
+      
+      masonry.style.transform = `translate3d(${-currentX}px, 0, 0)`;
+      
+      if (Math.abs(targetX - currentX) > 0.1) {
+        requestAnimationFrame(render);
+      } else {
+        isAnimating = false;
+        // Snap to exact target when close enough
+        masonry.style.transform = `translate3d(${-targetX}px, 0, 0)`;
+      }
+    }
+
     window.addEventListener('scroll', () => {
       // Only run on mobile where this layout is active
       if (window.innerWidth > 900) {
@@ -638,8 +657,12 @@
       // Calculate max horizontal scroll distance
       const maxScrollX = masonry.scrollWidth - window.innerWidth;
       
-      // Translate the gallery
-      masonry.style.transform = `translateX(${-clampedProgress * maxScrollX}px)`;
+      targetX = clampedProgress * maxScrollX;
+      
+      if (!isAnimating) {
+        isAnimating = true;
+        requestAnimationFrame(render);
+      }
     }, { passive: true });
   })();
 
