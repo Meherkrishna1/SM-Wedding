@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sowmya &amp; Manikanta — Wedding Celebration</title>
+  <meta name="description" content="You are cordially invited to the wedding celebration of Sowmya and Manikanta. Join us as we begin our forever together." />
+  <meta property="og:title" content="Sowmya & Manikanta — Wedding Celebration" />
+  <meta property="og:description" content="You are cordially invited to witness the union of Sowmya & Manikanta." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
+
+  <link rel="preload" as="image" href="assets/petal.svg" />
+  <link rel="preload" as="image" href="assets/mandala-bloom.svg" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PETAL RAIN -->
+  <div class="petal-rain" aria-hidden="true">
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="36" height="36" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="28" height="28" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="40" height="40" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="22" height="22" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="34" height="34" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="26" height="26" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="38" height="38" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="30" height="30" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="20" height="20" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="44" height="44" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="32" height="32" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="24" height="24" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="36" height="36" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="28" height="28" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="18" height="18" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="40" height="40" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="26" height="26" /></div>
+    <div class="petal-rain__petal"><img src="assets/petal.svg" alt="" width="34" height="34" /></div>
+  </div>
+
+  <!-- ENTRY GATE -->
+  <div class="entry-gate" id="entry-gate" role="dialog" aria-modal="true" aria-label="Wedding invitation entry">
+    <div class="entry-gate__bg">
+      <img src="assets/images/hero_couple.png" alt="" class="entry-gate__photo" />
+      <div class="entry-gate__veil"></div>
+      <img src="assets/jali-pattern.svg" alt="" class="entry-gate__jali" aria-hidden="true" />
+      <div class="entry-gate__glow"></div>
+    </div>
+    <div class="entry-gate__content">
+      <p class="entry-gate__eyebrow">— Together with their families —</p>
+      <img src="assets/mandala-bloom.svg" alt="" class="entry-gate__mandala" aria-hidden="true" />
+      <h1 class="entry-gate__names">Sowmya <span class="entry-gate__amp">&amp;</span> Manikanta</h1>
+      <img src="assets/ornate-divider.svg" alt="" class="entry-gate__divider" aria-hidden="true" />
+      <p class="entry-gate__date">22 · August · 2026 · Kakinada</p>
+      <button class="entry-gate__cta" id="entry-gate-cta" aria-label="Open the wedding invitation">Open Invitation</button>
+    </div>
+  </div>
+
+  <!-- MUSIC TOGGLE -->
+  <button class="music-toggle" id="music-toggle" aria-label="Toggle background music" aria-pressed="false">
+    <span class="music-toggle__icon" aria-hidden="true">♪</span>
+    <span class="music-toggle__text">Music</span>
+  </button>
+  <audio id="bg-music" loop preload="none">
+    <source src="assets/music/background.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- NAV -->
+  <nav class="site-nav" id="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Back to top">
+        <img src="sm-simple-vector-logo-design.png" alt="Logo" style="height: 80px; width: auto; object-fit: contain;" />
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#couple"    class="nav-link">Our Story</a></li>
+        <li><a href="#events"    class="nav-link">Celebrations</a></li>
+        <li><a href="#countdown" class="nav-link">Countdown</a></li>
+        <li><a href="#gallery"   class="nav-link">Gallery</a></li>
+        <li><a href="#venue"     class="nav-link">Venue</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <!-- 1. Invitation-feel hero: particles canvas, animated monogram, invitation copy -->
+    <section class="hero" id="hero" aria-label="Wedding invitation hero">
+      <div class="hero__bg">
+        <img src="assets/images/hero_couple.png" alt="Sowmya and Manikanta — wedding portrait" class="hero__img" id="hero-img" />
+        <div class="hero__overlay"></div>
+        <img src="assets/jali-pattern.svg" alt="" class="hero__jali" aria-hidden="true" />
+      </div>
+
+      <!-- Particle canvas for golden bokeh -->
+      <canvas class="hero__particles" id="hero-particles" aria-hidden="true"></canvas>
+
+      <div class="hero__content">
+        <!-- Light rays effect (added via CSS pseudo-element later) -->
+        <div class="hero__light-rays" aria-hidden="true"></div>
+
+        <!-- Animated monogram ring -->
+        <div class="hero__monogram reveal" aria-hidden="true" style="border: none; background: transparent; box-shadow: none; margin-bottom: var(--sp-6);">
+          <img src="sm-simple-vector-logo-design.png" alt="Sowmya and Manikanta Logo" style="width: 140px; height: auto;" />
+        </div>
+
+        <p class="hero__invite-label reveal reveal--delay-1" style="margin-bottom: var(--sp-6);">Together with their families</p>
+
+        <div class="hero__names reveal reveal--delay-2" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 0; margin-bottom: var(--sp-8);">
+          <h2 class="hero__name" style="font-size: clamp(3rem, 6vw, 5rem); line-height: 1; margin: 0;">Sowmya</h2>
+          <span class="hero__ampersand" style="font-size: clamp(2rem, 4vw, 3rem); color: var(--clr-gold); font-family: var(--font-serif); font-style: italic; margin: -0.1em 0; z-index: 2;">&amp;</span>
+          <h2 class="hero__name" style="font-size: clamp(3rem, 6vw, 5rem); line-height: 1; margin: 0;">Manikanta</h2>
+        </div>
+        
+        <p class="hero__invite-sub reveal reveal--delay-3" style="font-family: var(--font-serif); font-size: clamp(1.2rem, 3vw, 1.6rem); font-style: italic; color: var(--clr-ivory); margin-bottom: var(--sp-16); line-height: 1.4;">
+          joyfully invite you<br/>to celebrate their wedding
+        </p>
+
+        <p class="hero__date reveal reveal--delay-4" style="display: flex; flex-direction: column; align-items: center; gap: var(--sp-2); margin-bottom: var(--sp-12);">
+          <span class="hero__date-full" style="font-family: var(--font-sans); font-size: clamp(1rem, 2vw, 1.25rem); color: var(--clr-champagne); letter-spacing: 0.25em; text-transform: uppercase;">AUGUST 2026</span>
+          <span class="hero__date-place" style="font-family: var(--font-sans); font-size: var(--fs-sm); letter-spacing: 0.25em; text-transform: uppercase; color: var(--clr-gold-light);">Kakinada, Andhra Pradesh</span>
+        </p>
+      </div>
+
+      <!-- Scroll cue -->
+      <div class="hero__scroll-cue reveal reveal--delay-5" aria-hidden="true" style="bottom: 2rem; z-index: 3;">
+        <span class="hero__scroll-text" style="margin-bottom: var(--sp-2);">Scroll</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- INVITATION QUOTE -->
+    <section class="quote-band" aria-label="Invitation quote">
+      <div class="container">
+        <div class="section-ornate-divider" aria-hidden="true"><img src="assets/ornate-divider.svg" alt="" /></div>
+        <blockquote class="quote reveal">
+          <p>"Two souls, one destiny — woven together by love, blessed by family, celebrated by you."</p>
+        </blockquote>
+        <div class="section-ornate-divider" aria-hidden="true"><img src="assets/ornate-divider.svg" alt="" /></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ OUR STORY TIMELINE ═══════════════ -->
+    <!-- 2. Timeline replacing "A Love Written in the Stars" split layout -->
+    <section class="couple" id="couple" aria-label="Our story">
+      <div class="container">
+        <div class="section-header section-header--center">
+          <div class="section-mandala-sm" aria-hidden="true"><img src="assets/mandala-bloom.svg" alt="" /></div>
+          <span class="section-label">Our Journey</span>
+          <h2 class="section-heading">A Story Written<br/><em>Together</em></h2>
+        </div>
+
+        <!-- Couple profiles row -->
+        <div class="couple__profiles-row reveal">
+          <div class="couple__profile-card">
+            <div class="couple__profile-img-wrap">
+              <img src="assets/images/gallery_couple_portraits.png" alt="Sowmya" class="couple__profile-img" />
+            </div>
+            <h3 class="couple__profile-name">Sowmya</h3>
+            <p class="couple__profile-desc">Daughter of Suribabu & Laxmi. Sowmya brings light to every room she enters. Her infectious laugh and boundless energy turned Manikanta's quiet world upside down—in the best way possible.</p>
+          </div>
+          <div class="couple__hearts" aria-hidden="true">
+            <img src="assets/ornate-divider.svg" alt="" class="couple__hearts-divider" />
+            <span class="couple__hearts-symbol">✦</span>
+          </div>
+          <div class="couple__profile-card">
+            <div class="couple__profile-img-wrap">
+              <img src="assets/images/couple_story.png" alt="Manikanta" class="couple__profile-img" />
+            </div>
+            <h3 class="couple__profile-name">Manikanta</h3>
+            <p class="couple__profile-desc">The calm to her storm. Manikanta is a software engineer with a love for old-school romance, long drives, and finding poetry in the everyday moments.</p>
+          </div>
+        </div>
+
+      <div class="container" style="position: relative; z-index: 2;">
+        <div class="section-header section-header--center">
+          <div class="section-mandala-sm" aria-hidden="true"><img src="assets/mandala-bloom.svg" alt="" /></div>
+          <span class="section-label">How We Met</span>
+          <h2 class="section-heading">Our Story</h2>
+        </div>
+
+        <!-- Story timeline (Immersive Redesign) -->
+        <div class="timeline" style="margin-top: var(--sp-16); padding: var(--sp-16) 0; position: relative;">
+          <!-- Floating background elements for timeline -->
+          <div style="position: absolute; top: -5%; left: -10%; opacity: 0.15; pointer-events: none; width: 400px;"><img src="assets/mandala-bloom.svg" style="width: 100%; animation: playRingSpin 40s linear infinite;" alt=""></div>
+          <div style="position: absolute; bottom: 10%; right: -10%; opacity: 0.15; pointer-events: none; width: 300px;"><img src="assets/mandala-bloom.svg" style="width: 100%; animation: playRingSpin 30s linear infinite reverse;" alt=""></div>
+          
+          <div class="timeline__line" aria-hidden="true"></div>
+
+          <div class="timeline__item reveal" id="timeline-1">
+            <div class="timeline__card timeline__card--left">
+              <span class="timeline__year" style="font-size: var(--fs-sm);">2018</span>
+              <h3 class="timeline__title" style="font-size: 2.35rem; margin-bottom: var(--sp-4);">First Meeting</h3>
+              <p class="timeline__desc" style="font-size: 1.2rem; line-height: 1.8;">A monsoon book fair in Pune. A chance meeting over chai and dog-eared Neruda. Neither of them planned it — love rarely does.</p>
+            </div>
+            <div class="timeline__dot" aria-hidden="true"><span class="timeline__dot-inner" style="width: 16px; height: 16px;"></span></div>
+            <div class="timeline__spacer"></div>
+          </div>
+
+          <div class="timeline__item reveal" id="timeline-2">
+            <div class="timeline__spacer"></div>
+            <div class="timeline__dot" aria-hidden="true"><span class="timeline__dot-inner" style="width: 16px; height: 16px;"></span></div>
+            <div class="timeline__card timeline__card--right">
+              <span class="timeline__year" style="font-size: var(--fs-sm);">2020</span>
+              <h3 class="timeline__title" style="font-size: 2.35rem; margin-bottom: var(--sp-4);">Friendship</h3>
+              <p class="timeline__desc" style="font-size: 1.2rem; line-height: 1.8;">Late-night calls, long walks, and the kind of laughter that makes strangers stare. What began as friendship quietly became the most important thing.</p>
+            </div>
+          </div>
+
+          <div class="timeline__item reveal" id="timeline-3">
+            <div class="timeline__card timeline__card--left">
+              <span class="timeline__year" style="font-size: var(--fs-sm);">December 2024</span>
+              <h3 class="timeline__title" style="font-size: 2.35rem; margin-bottom: var(--sp-4);">Engagement</h3>
+              <p class="timeline__desc" style="font-size: 1.2rem; line-height: 1.8;">On a rooftop under winter stars, Manikanta asked the question he had been carrying in his heart for years. She said yes before he finished the sentence.</p>
+            </div>
+            <div class="timeline__dot timeline__dot--gold" aria-hidden="true"><span class="timeline__dot-inner" style="width: 16px; height: 16px;"></span></div>
+            <div class="timeline__spacer"></div>
+          </div>
+
+          <div class="timeline__item reveal" id="timeline-4">
+            <div class="timeline__spacer"></div>
+            <div class="timeline__dot timeline__dot--gold" aria-hidden="true"><span class="timeline__dot-inner" style="width: 16px; height: 16px;"></span></div>
+            <div class="timeline__card timeline__card--right">
+              <span class="timeline__year" style="font-size: var(--fs-sm);">22 August 2026</span>
+              <h3 class="timeline__title" style="font-size: 2.65rem; color: var(--clr-royal); margin-bottom: var(--sp-4);">Forever Begins</h3>
+              <p class="timeline__desc" style="font-size: 1.2rem; line-height: 1.8;">Seven vows, one lifetime. In the presence of family, fire, and the blessings of their ancestors — Sowmya and Manikanta become one. And you are here to witness it.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="couple__cta-row reveal">
+          <a href="#events" class="btn btn--outline">View Celebrations</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CELEBRATION SCHEDULE ═══════════════ -->
+    <!-- 3. Four elegant event cards in a 2×2 grid -->
+    <section class="events" id="events" aria-label="Celebration schedule">
+      <div class="events__bg-text" aria-hidden="true">Celebrations</div>
+      <div class="container">
+        <div class="section-header section-header--center">
+          <div class="section-mandala-sm" aria-hidden="true"><img src="assets/mandala-bloom.svg" alt="" /></div>
+          <span class="section-label">Mark Your Calendar</span>
+          <h2 class="section-heading">The Celebrations</h2>
+        </div>
+
+        <div class="events__grid">
+
+          <!-- Haldi -->
+          <article class="ecard reveal" id="event-mehndi">
+            <div class="ecard__img-wrap" style="position: absolute; top: 0; left: 0; right: 0; bottom: 15%; z-index: 0; aspect-ratio: auto;">
+              <img src="assets/images/gallery_mehndi.png" alt="Haldi ceremony" class="ecard__img" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" />
+              <div class="ecard__img-overlay" style="background: linear-gradient(to top, rgba(15,7,32,0.95) 0%, rgba(15,7,32,0.4) 50%, rgba(15,7,32,0.1) 100%);"></div>
+            </div>
+            <span class="ecard__number" aria-hidden="true" style="position: absolute; top: -1rem; right: -1rem; font-size: 16rem; line-height: 0.8; color: rgba(201,168,76,0.15); z-index: 1;">01</span>
+            
+            <div class="ecard__body" style="position: relative; z-index: 2; padding: 0;">
+              <h3 class="ecard__title" style="font-size: clamp(3.5rem, 7vw, 5rem); margin-bottom: var(--sp-4); letter-spacing: 0.1em; color: var(--clr-gold);">HALDI</h3>
+              
+              <div class="ecard__details" style="gap: var(--sp-1); margin-bottom: var(--sp-4);">
+                <div class="ecard__detail" style="font-size: 1.5rem; color: var(--clr-ivory); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;">21 AUGUST</div>
+                <div class="ecard__detail" style="font-size: 1.5rem; color: var(--clr-ivory); font-weight: 300;">9:00 AM</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Wedding -->
+          <article class="ecard reveal reveal--delay-1" id="event-wedding">
+            <div class="ecard__img-wrap" style="position: absolute; top: 0; left: 0; right: 0; bottom: 15%; z-index: 0; aspect-ratio: auto;">
+              <img src="assets/images/venue_mandap.png" alt="The Wedding Ceremony" class="ecard__img" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" />
+              <div class="ecard__img-overlay" style="background: linear-gradient(to top, rgba(15,7,32,0.95) 0%, rgba(15,7,32,0.4) 50%, rgba(15,7,32,0.1) 100%);"></div>
+            </div>
+            <span class="ecard__number" aria-hidden="true" style="position: absolute; top: -1rem; right: -1rem; font-size: 16rem; line-height: 0.8; color: rgba(201,168,76,0.15); z-index: 1;">02</span>
+            
+            <div class="ecard__body" style="position: relative; z-index: 2; padding: 0;">
+              <h3 class="ecard__title" style="font-size: clamp(3.5rem, 7vw, 5rem); margin-bottom: var(--sp-4); letter-spacing: 0.1em; color: var(--clr-gold);">WEDDING</h3>
+              
+              <div class="ecard__details" style="gap: var(--sp-1); margin-bottom: var(--sp-4);">
+                <div class="ecard__detail" style="font-size: 1.5rem; color: var(--clr-ivory); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;">22 AUGUST</div>
+                <div class="ecard__detail" style="font-size: 1.5rem; color: var(--clr-ivory); font-weight: 300;">7:00 PM</div>
+              </div>
+            </div>
+          </article>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ COUNTDOWN ═══════════════ -->
+    <!-- 4. Glowing counters with ring animation -->
+    <section class="countdown" id="countdown" aria-label="Wedding countdown">
+      <div class="countdown__bg">
+        <img src="assets/images/venue_mandap.png" alt="" aria-hidden="true" class="countdown__bg-img" />
+        <div class="countdown__overlay"></div>
+        <canvas class="countdown__particles" id="countdown-particles" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.8;"></canvas>
+      </div>
+      <div class="container reveal" style="position: relative; z-index: 2;">
+        <div class="section-header section-header--center">
+          <span class="section-label section-label--light">The Big Day</span>
+          <h2 class="section-heading section-heading--light" style="font-size: clamp(2.2rem, 6vw, 4.5rem);">Until We Say <em>"I Do"</em></h2>
+          <div class="section-ornate-divider section-ornate-divider--light" aria-hidden="true">
+            <img src="assets/ornate-divider.svg" alt="" />
+          </div>
+          <p class="section-sub" style="color: var(--clr-stone-light); font-family: var(--font-serif); font-style: italic; font-size: 1.25rem; margin-top: var(--sp-2);">
+            A few more moments until our forever begins
+          </p>
+        </div>
+        <div class="countdown__timer" id="countdown-timer" aria-live="polite" aria-label="Time until the wedding">
+          <div class="countdown__unit">
+            <div class="countdown__value-wrap">
+              <div class="countdown__ring" aria-hidden="true">
+                <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" class="countdown__ring-track"/><circle cx="40" cy="40" r="36" class="countdown__ring-fill" id="ring-days"/></svg>
+              </div>
+              <span class="countdown__value" id="cd-days">00</span>
+            </div>
+            <span class="countdown__label">Days</span>
+          </div>
+          <div class="countdown__sep" aria-hidden="true">:</div>
+          <div class="countdown__unit">
+            <div class="countdown__value-wrap">
+              <div class="countdown__ring" aria-hidden="true">
+                <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" class="countdown__ring-track"/><circle cx="40" cy="40" r="36" class="countdown__ring-fill" id="ring-hours"/></svg>
+              </div>
+              <span class="countdown__value" id="cd-hours">00</span>
+            </div>
+            <span class="countdown__label">Hours</span>
+          </div>
+          <div class="countdown__sep" aria-hidden="true">:</div>
+          <div class="countdown__unit">
+            <div class="countdown__value-wrap">
+              <div class="countdown__ring" aria-hidden="true">
+                <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" class="countdown__ring-track"/><circle cx="40" cy="40" r="36" class="countdown__ring-fill" id="ring-minutes"/></svg>
+              </div>
+              <span class="countdown__value" id="cd-minutes">00</span>
+            </div>
+            <span class="countdown__label">Minutes</span>
+          </div>
+          <div class="countdown__sep" aria-hidden="true">:</div>
+          <div class="countdown__unit">
+            <div class="countdown__value-wrap">
+              <div class="countdown__ring" aria-hidden="true">
+                <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" class="countdown__ring-track"/><circle cx="40" cy="40" r="36" class="countdown__ring-fill" id="ring-seconds"/></svg>
+              </div>
+              <span class="countdown__value" id="cd-seconds">00</span>
+            </div>
+            <span class="countdown__label">Seconds</span>
+          </div>
+        </div>
+        <p class="countdown__subtext">22 August 2026 · Kakinada, Andhra Pradesh</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════ LETTER ═══════════════ -->
+    <section class="letter" id="letter" aria-label="A Letter To Our Guests" style="background: var(--clr-ivory); position: relative;">
+      <div class="container reveal" style="max-width: 800px; text-align: center;">
+        <div class="section-header section-header--center" style="margin-bottom: var(--sp-4);">
+          <span class="section-label" style="color: var(--clr-gold-dark);">A Letter To Our Guests</span>
+          <h2 class="section-heading" style="color: var(--clr-royal);">Dear Family &amp; Friends,</h2>
+          <div class="section-ornate-divider" aria-hidden="true" style="margin-top: var(--sp-4);">
+            <img src="assets/ornate-divider.svg" alt="" />
+          </div>
+        </div>
+        <div class="letter__content" style="font-family: var(--font-serif); font-size: clamp(1.2rem, 3vw, 1.6rem); color: var(--clr-stone); line-height: 1.8; margin-top: var(--sp-8);">
+          <p style="margin-bottom: var(--sp-6);">Some journeys begin with a hello.</p>
+          <p style="margin-bottom: var(--sp-6);">Ours began with friendship,<br/>grew into love,<br/>and now brings us here.</p>
+          <p style="margin-bottom: var(--sp-8);">Your presence on our special day<br/>would mean the world to us.</p>
+          <p style="font-style: italic; font-size: 1.1em; color: var(--clr-royal);">With love,</p>
+          <p style="font-family: var(--font-script); font-size: clamp(3rem, 6vw, 4.5rem); color: var(--clr-gold); margin-top: var(--sp-4);">Sowmya &amp; Manikanta</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ GALLERY ═══════════════ -->
+    <!-- 5. Gallery with enhanced lightbox & hover effects -->
+    <section class="gallery" id="gallery" aria-label="Photo gallery">
+      <div class="container">
+        <div class="section-header section-header--center">
+          <div class="section-mandala-sm" aria-hidden="true"><img src="assets/mandala-bloom.svg" alt="" /></div>
+          <span class="section-label">Moments</span>
+          <h2 class="section-heading">Memories in Bloom</h2>
+          <p class="section-sub">Glimpses from our journey — stolen moments, quiet laughter, and the warmth of being with the ones you love.</p>
+        </div>
+      </div>
+      <div class="gallery__scroll-track">
+        <div class="gallery__sticky-wrap">
+          <div class="gallery__masonry" id="gallery-grid" role="list" aria-label="Wedding photo gallery">
+            <figure class="gallery__item gallery__item--tall reveal" role="listitem">
+              <img src="assets/images/couple_story.png" alt="Sowmya and Manikanta — golden hour portrait" class="gallery__img" loading="lazy" />
+              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+            </figure>
+            <figure class="gallery__item reveal" role="listitem">
+              <img src="assets/images/gallery_mehndi.png" alt="Mehndi ceremony" class="gallery__img" loading="lazy" />
+              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+            </figure>
+            <figure class="gallery__item reveal reveal--delay-1" role="listitem">
+              <img src="assets/images/gallery_flowers.png" alt="Wedding floral arrangements" class="gallery__img" loading="lazy" />
+              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+            </figure>
+            <figure class="gallery__item gallery__item--wide reveal reveal--delay-1" role="listitem">
+              <img src="assets/images/gallery_sangeet.png" alt="Sangeet celebration" class="gallery__img" loading="lazy" />
+              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+            </figure>
+            <figure class="gallery__item gallery__item--tall reveal" role="listitem">
+              <img src="assets/images/gallery_reception.png" alt="Reception hall" class="gallery__img" loading="lazy" />
+              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+            </figure>
+            <figure class="gallery__item reveal reveal--delay-2" role="listitem">
+              <img src="assets/images/gallery_couple_portraits.png" alt="Couple portrait" class="gallery__img" loading="lazy" />
+              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+            </figure>
+            <figure class="gallery__item reveal reveal--delay-2" role="listitem">
+              <img src="assets/images/venue_mandap.png" alt="Wedding mandap" class="gallery__img" loading="lazy" />
+              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enhanced Lightbox -->
+      <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox" hidden>
+        <div class="lightbox__backdrop" id="lightbox-backdrop"></div>
+        <button class="lightbox__close" id="lightbox-close" aria-label="Close lightbox">&#x2715;</button>
+        <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous image">&#x2039;</button>
+        <div class="lightbox__img-wrap">
+          <img src="" alt="" class="lightbox__img" id="lightbox-img" />
+          <p class="lightbox__caption" id="lightbox-caption"></p>
+        </div>
+        <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next image">&#x203A;</button>
+        <div class="lightbox__counter" id="lightbox-counter" aria-live="polite">1 / 7</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CINEMATIC VIDEO CARD ═══════════════ -->
+    <!-- 6. Full-width cinematic video section -->
+    <section class="film-mini-section" id="glimpse" aria-label="Pre-wedding film">
+      <div class="container">
+        <div class="section-header section-header--center">
+          <span class="section-label">Our Film</span>
+          <h2 class="section-heading">A short glimpse into our story.</h2>
+        </div>
+        
+        <div class="film-mini reveal reveal-scale" id="film-poster-wrap">
+          <img src="assets/images/couple_story.png" alt="Pre-wedding film thumbnail" class="film-mini__img" id="film-poster" />
+          <div class="film-mini__overlay"></div>
+          
+          <div class="film-mini__content">
+            <button class="film-mini__play" id="film-play-btn" aria-label="Play pre-wedding film">
+              <svg class="film-mini__play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </button>
+            <p class="film-mini__duration">3 min • Watch our story</p>
+          </div>
+
+          <div class="film__player" id="film-player" hidden>
+            <button class="film__close" id="film-close-btn" aria-label="Close video">&#x2715; Close</button>
+            <iframe
+              id="wedding-video"
+              class="film__iframe"
+              src=""
+              data-src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=1&rel=0&modestbranding=1"
+              title="Sowmya &amp; Manikanta — Pre-Wedding Film"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ VENUE & TRAVEL ═══════════════ -->
+    <!-- 7. Larger venue card, directions button, travel chips -->
+    <section class="venue" id="venue" aria-label="Venue and travel information">
+      <div class="container">
+        <div class="section-header section-header--center">
+          <span class="section-label">Find Us</span>
+          <h2 class="section-heading">Venue</h2>
+          <div class="section-ornate-divider" aria-hidden="true"><img src="assets/ornate-divider.svg" alt="" /></div>
+        </div>
+
+        <!-- Premium venue card with image background -->
+        <div class="venue__card venue__card--premium reveal">
+          <div class="venue__bg-wrap">
+            <img src="assets/images/venue_mandap.png" alt="Taj Lands End Wedding Venue" class="venue__bg-img" loading="lazy" />
+            <div class="venue__bg-overlay"></div>
+          </div>
+          
+          <div class="venue__info-glass">
+            <div class="venue__primary">
+              <p class="venue__eyebrow">Wedding &amp; Reception Venue</p>
+              <h3 class="venue__name">Taj Lands End</h3>
+              <p class="venue__address">Bandstand, Bandra West<br/>Mumbai — 400050, Maharashtra</p>
+              <a href="https://maps.google.com/?q=Taj+Lands+End+Mumbai" target="_blank" rel="noopener" class="btn btn--gold venue__directions-btn" id="venue-directions-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.71 11.29l-9-9a1 1 0 00-1.42 0l-9 9a1 1 0 000 1.42l9 9a1 1 0 001.42 0l9-9a1 1 0 000-1.42zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>
+                Get Directions
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ SHARE & FOOTER ═══════════════ -->
+    <footer class="site-footer" id="share" role="contentinfo">
+      <div class="footer__inner reveal">
+        <div class="footer__mandala" aria-hidden="true"><img src="assets/mandala-bloom.svg" alt="" /></div>
+        
+        <div class="footer__names">
+          <span class="footer__script">Sowmya</span>
+          <span class="footer__amp">&amp;</span>
+          <span class="footer__script">Manikanta</span>
+        </div>
+        
+        <div class="footer__closing">
+          <p>Two hearts. One celebration. A lifetime of memories ahead.</p>
+        </div>
+        
+        <div class="share__actions" style="margin: var(--sp-4) 0;">
+          <button class="share__btn" id="share-whatsapp-btn" aria-label="Share on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </button>
+          <button class="share__btn" id="share-copy-btn" aria-label="Copy invitation link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" width="20" height="20"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy Link
+          </button>
+          <button class="share__btn" id="calendar-btn" aria-label="Add to Calendar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" width="20" height="20">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            Add to Calendar
+          </button>
+        </div>
+        <div class="share__copy-feedback" id="share-copy-feedback" hidden role="status">Link copied to clipboard!</div>
+
+        <p class="footer__hashtag" style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--clr-gold); margin-top: var(--sp-8); font-style: italic;">#SonyManiKiShaadi</p>
+        <p class="footer__location-line" style="font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.2em; font-size: var(--fs-xs); color: var(--clr-champagne); margin-top: var(--sp-4);">
+          22 August 2026<br/>Kakinada
+        </p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
