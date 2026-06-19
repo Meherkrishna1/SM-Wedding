@@ -612,59 +612,8 @@
   })();
 
   /* ─── HORIZONTAL SCROLL GALLERY (MOBILE) ─── */
-  (function initHorizontalScroll() {
-    const track = $('.gallery__scroll-track');
-    const stickyWrap = $('.gallery__sticky-wrap');
-    const masonry = $('.gallery__masonry');
-    
-    if (!track || !stickyWrap || !masonry) return;
+  // Replaced with native CSS horizontal scrolling for better performance and smoother experience
 
-    let targetX = 0;
-    let currentX = 0;
-    let isAnimating = false;
-
-    function render() {
-      // Lerp for smooth easing
-      currentX += (targetX - currentX) * 0.05;
-      
-      masonry.style.transform = `translate3d(${-currentX}px, 0, 0)`;
-      
-      if (Math.abs(targetX - currentX) > 0.1) {
-        requestAnimationFrame(render);
-      } else {
-        isAnimating = false;
-        // Snap to exact target when close enough
-        masonry.style.transform = `translate3d(${-targetX}px, 0, 0)`;
-      }
-    }
-
-    window.addEventListener('scroll', () => {
-      // Only run on mobile where this layout is active
-      if (window.innerWidth > 900) {
-        masonry.style.transform = '';
-        return;
-      }
-
-      const trackRect = track.getBoundingClientRect();
-      const stickyRect = stickyWrap.getBoundingClientRect();
-      
-      // Calculate how far down the track we've scrolled
-      const scrollProgress = -trackRect.top / (trackRect.height - stickyRect.height);
-      
-      // Clamp between 0 and 1
-      const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
-      
-      // Calculate max horizontal scroll distance
-      const maxScrollX = masonry.scrollWidth - window.innerWidth;
-      
-      targetX = clampedProgress * maxScrollX;
-      
-      if (!isAnimating) {
-        isAnimating = true;
-        requestAnimationFrame(render);
-      }
-    }, { passive: true });
-  })();
 
   /* ─── GALLERY MASONRY EQUALISE ─────────────── */
   (function masonryLoad() {
