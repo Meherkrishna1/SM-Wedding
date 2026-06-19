@@ -613,43 +613,30 @@
 
   /* ─── 3D HORIZONTAL SCROLL GALLERY (MOBILE) ─── */
   (function init3DHorizontalScroll() {
-    const track = $('.gallery__scroll-track');
     const scrollContainer = $('.gallery__sticky-wrap');
-    const masonry = $('.gallery__masonry');
     const items = $$('.gallery__item');
-    
-    if (!track || !scrollContainer || !masonry || items.length === 0) return;
+    if (!scrollContainer || items.length === 0) return;
 
     let isMobile = window.innerWidth <= 900;
     let ticking = false;
 
-    let targetX = 0;
-    let currentX = 0;
-
-    function render3D() {
+    function update3D() {
       if (!isMobile) {
-        masonry.style.transform = '';
         items.forEach(item => item.style.transform = '');
         ticking = false;
         return;
       }
 
-      // Smooth easing (lerp)
-      currentX += (targetX - currentX) * 0.08;
-      
-      masonry.style.transform = `translateX(${-currentX}px)`;
-
-      // Compute 3D based on currentX
-      const containerWidth = scrollContainer.clientWidth;
-      const containerCenter = containerWidth / 2;
+      const containerRect = scrollContainer.getBoundingClientRect();
+      const containerCenter = containerRect.left + containerRect.width / 2;
 
       items.forEach(item => {
-        // Since masonry is moving by -currentX, the item's visual center relative to container left edge:
-        const itemCenter = (item.offsetLeft - currentX) + (item.offsetWidth / 2);
+        const itemRect = item.getBoundingClientRect();
+        const itemCenter = itemRect.left + itemRect.width / 2;
         
         const dist = itemCenter - containerCenter;
         
-        let normalizedDist = dist / (containerWidth * 0.7);
+        let normalizedDist = dist / (containerRect.width * 0.7);
         normalizedDist = Math.max(-1, Math.min(1, normalizedDist));
 
         // 3D Coverflow calculations
@@ -660,44 +647,27 @@
         item.style.transform = `translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
       });
 
-      if (Math.abs(targetX - currentX) > 0.5) {
-        requestAnimationFrame(render3D);
-      } else {
-        ticking = false;
-        masonry.style.transform = `translateX(${-targetX}px)`;
-      }
+      ticking = false;
     }
 
-    function onScroll() {
-      if (!isMobile) return;
-
-      const trackRect = track.getBoundingClientRect();
-      const stickyRect = scrollContainer.getBoundingClientRect();
-      
-      const scrollableHeight = trackRect.height - stickyRect.height;
-      let scrollProgress = -trackRect.top / scrollableHeight;
-      
-      scrollProgress = Math.max(0, Math.min(1, scrollProgress));
-      
-      const maxScrollX = masonry.scrollWidth - scrollContainer.clientWidth;
-      
-      targetX = scrollProgress * maxScrollX;
-      
+    scrollContainer.addEventListener('scroll', () => {
       if (!ticking) {
+        requestAnimationFrame(update3D);
         ticking = true;
-        requestAnimationFrame(render3D);
       }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', () => {
-      isMobile = window.innerWidth <= 900;
-      onScroll();
     }, { passive: true });
 
-    // Initial call
+    window.addEventListener('resize', () => {
+      isMobile = window.innerWidth <= 900;
+      if (!ticking) {
+        requestAnimationFrame(update3D);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Ensure layout is settled before first calculation
     setTimeout(() => {
-      onScroll();
+      requestAnimationFrame(update3D);
     }, 100);
   })();
 

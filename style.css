@@ -4287,18 +4287,22 @@ button, input, select, textarea {
   .ecard__title { font-size: clamp(1.5rem, 5vw, 2rem); }
   .events__grid { grid-template-columns: 1fr; }
   .gallery__scroll-track {
-    height: 400vh;
+    height: auto;
     position: relative;
   }
   .gallery__sticky-wrap {
-    position: sticky;
+    position: relative;
     top: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-bottom: 0;
-    overflow: hidden;
+    padding-bottom: var(--sp-8);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .gallery__sticky-wrap::-webkit-scrollbar {
+    display: none;
   }
   .gallery__masonry { 
     display: flex;
@@ -4308,7 +4312,7 @@ button, input, select, textarea {
     width: max-content;
     columns: unset;
     column-gap: unset;
-    will-change: transform;
+    will-change: auto;
     perspective: 1000px;
     transform-style: preserve-3d;
   }
@@ -4316,6 +4320,7 @@ button, input, select, textarea {
     flex: 0 0 80vw;
     border-radius: 24px;
     overflow: hidden;
+    scroll-snap-align: center;
     margin-bottom: 0;
     transition: border-color var(--dur-med) var(--ease-smooth), box-shadow var(--dur-med) var(--ease-smooth);
     will-change: transform;
