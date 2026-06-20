@@ -384,49 +384,78 @@
     </section>
 
     <!-- ═══════════════ GALLERY ═══════════════ -->
-    <!-- 5. Gallery with enhanced lightbox & hover effects -->
     <section class="gallery" id="gallery" aria-label="Photo gallery">
-      <div class="gallery__scroll-track">
-        <div class="gallery__sticky-wrap">
-          <div class="container">
-            <div class="section-header section-header--center" style="margin-bottom: 0;">
-              <div class="section-mandala-sm" aria-hidden="true"><img src="assets/mandala-bloom.svg" alt="" /></div>
-              <span class="section-label">Moments</span>
-              <h2 class="section-heading">Memories in Bloom</h2>
-              <p class="section-sub">Glimpses from our journey — stolen moments, quiet laughter, and the warmth of being with the ones you love.</p>
-            </div>
-          </div>
-          <div class="gallery__masonry" id="gallery-grid" role="list" aria-label="Wedding photo gallery">
-            <figure class="gallery__item gallery__item--tall reveal" role="listitem">
-              <img src="assets/images/couple_story.png" alt="Sowmya and Manikanta — golden hour portrait" class="gallery__img" loading="lazy" decoding="async" />
-              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
-            </figure>
-            <figure class="gallery__item reveal" role="listitem">
-              <img src="assets/images/gallery_mehndi.png" alt="Mehndi ceremony" class="gallery__img" loading="lazy" decoding="async" />
-              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
-            </figure>
-            <figure class="gallery__item reveal reveal--delay-1" role="listitem">
-              <img src="assets/images/gallery_flowers.png" alt="Wedding floral arrangements" class="gallery__img" loading="lazy" decoding="async" />
-              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
-            </figure>
-            <figure class="gallery__item gallery__item--wide reveal reveal--delay-1" role="listitem">
-              <img src="assets/images/gallery_sangeet.png" alt="Sangeet celebration" class="gallery__img" loading="lazy" decoding="async" />
-              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
-            </figure>
-            <figure class="gallery__item gallery__item--tall reveal" role="listitem">
-              <img src="assets/images/gallery_reception.png" alt="Reception hall" class="gallery__img" loading="lazy" decoding="async" />
-              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
-            </figure>
-            <figure class="gallery__item reveal reveal--delay-2" role="listitem">
-              <img src="assets/images/gallery_couple_portraits.png" alt="Couple portrait" class="gallery__img" loading="lazy" decoding="async" />
-              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
-            </figure>
-            <figure class="gallery__item reveal reveal--delay-2" role="listitem">
-              <img src="assets/images/venue_mandap.png" alt="Wedding mandap" class="gallery__img" loading="lazy" decoding="async" />
-              <div class="gallery__zoom-icon" aria-hidden="true">+</div>
-            </figure>
-          </div>
+      <div class="container">
+        <div class="section-header section-header--center">
+          <div class="section-mandala-sm" aria-hidden="true"><img src="assets/mandala-bloom.svg" alt="" /></div>
+          <span class="section-label">Moments</span>
+          <h2 class="section-heading">Our Little Memories</h2>
+          <p class="section-sub">Glimpses from our journey — stolen moments, quiet laughter, and the warmth of being with the ones you love.</p>
         </div>
+      </div>
+
+      <div class="polaroid-stack" id="gallery-grid" role="list" aria-label="Wedding photo gallery">
+        <figure class="polaroid-card reveal" role="listitem">
+          <div class="washi-tape" aria-hidden="true"></div>
+          <div class="polaroid-card__inner">
+            <img src="assets/images/couple_story.png" alt="Sowmya and Manikanta — golden hour portrait" class="polaroid-img" loading="lazy" decoding="async" />
+            <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+          </div>
+          <figcaption class="polaroid-caption">Golden hour glow</figcaption>
+        </figure>
+        <figure class="polaroid-card reveal reveal--delay-1" role="listitem">
+          <div class="washi-tape" aria-hidden="true"></div>
+          <div class="polaroid-card__inner">
+            <img src="assets/images/gallery_mehndi.png" alt="Mehndi ceremony" class="polaroid-img" loading="lazy" decoding="async" />
+            <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+          </div>
+          <figcaption class="polaroid-caption">Mehndi madness</figcaption>
+        </figure>
+        <figure class="polaroid-card reveal reveal--delay-2" role="listitem">
+          <div class="washi-tape" aria-hidden="true"></div>
+          <div class="polaroid-card__inner">
+            <img src="assets/images/gallery_flowers.png" alt="Wedding floral arrangements" class="polaroid-img" loading="lazy" decoding="async" />
+            <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+          </div>
+          <figcaption class="polaroid-caption">Details in bloom</figcaption>
+        </figure>
+        <figure class="polaroid-card reveal reveal--delay-3" role="listitem">
+          <div class="washi-tape" aria-hidden="true"></div>
+          <div class="polaroid-card__inner">
+            <img src="assets/images/gallery_sangeet.png" alt="Sangeet celebration" class="polaroid-img" loading="lazy" decoding="async" />
+            <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+          </div>
+          <figcaption class="polaroid-caption">Dancing the night away</figcaption>
+        </figure>
+        <figure class="polaroid-card reveal reveal--delay-1" role="listitem">
+          <div class="washi-tape" aria-hidden="true"></div>
+          <div class="polaroid-card__inner">
+            <img src="assets/images/gallery_reception.png" alt="Reception hall" class="polaroid-img" loading="lazy" decoding="async" />
+            <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+          </div>
+          <figcaption class="polaroid-caption">A night to remember</figcaption>
+        </figure>
+        <figure class="polaroid-card reveal reveal--delay-2" role="listitem">
+          <div class="washi-tape" aria-hidden="true"></div>
+          <div class="polaroid-card__inner">
+            <img src="assets/images/gallery_couple_portraits.png" alt="Couple portrait" class="polaroid-img" loading="lazy" decoding="async" />
+            <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+          </div>
+          <figcaption class="polaroid-caption">Just us</figcaption>
+        </figure>
+        <figure class="polaroid-card reveal reveal--delay-3" role="listitem">
+          <div class="washi-tape" aria-hidden="true"></div>
+          <div class="polaroid-card__inner">
+            <img src="assets/images/venue_mandap.png" alt="Wedding mandap" class="polaroid-img" loading="lazy" decoding="async" />
+            <div class="gallery__zoom-icon" aria-hidden="true">+</div>
+          </div>
+          <figcaption class="polaroid-caption">Under the stars</figcaption>
+        </figure>
+      </div>
+
+      <div class="gallery-mobile-helper" aria-hidden="true">
+        <div class="gallery-pagination" id="gallery-pagination">1 / 7</div>
+        <div class="gallery-swipe-text">Swipe through our memories &rarr;</div>
       </div>
 
       <!-- Enhanced Lightbox -->
@@ -437,9 +466,9 @@
         <div class="lightbox__img-wrap">
           <img src="" alt="" class="lightbox__img" id="lightbox-img" />
           <p class="lightbox__caption" id="lightbox-caption"></p>
+          <div class="lightbox__counter" id="lightbox-counter" aria-live="polite">1 / 7</div>
         </div>
         <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next image">&#x203A;</button>
-        <div class="lightbox__counter" id="lightbox-counter" aria-live="polite">1 / 7</div>
       </div>
     </section>
 
@@ -462,7 +491,7 @@
                 <path d="M8 5v14l11-7z"/>
               </svg>
             </button>
-            <p class="film-mini__duration">3 min • Watch our story</p>
+            <p class="film-mini__duration">Watch our story</p>
           </div>
 
           <div class="film__player" id="film-player" hidden>

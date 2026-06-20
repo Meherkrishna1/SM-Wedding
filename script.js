@@ -314,7 +314,7 @@
 
   /* â”€â”€â”€ GALLERY & LIGHTBOX â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   (function gallery() {
-    const items     = $$('.gallery__item');
+    const items     = $$('.polaroid-card');
     const lightbox  = $('#lightbox');
     const lbImg     = $('#lightbox-img');
     const lbClose   = $('#lightbox-close');
@@ -327,8 +327,8 @@
 
     let currentIndex = 0;
     const images = items.map(item => {
-      const img    = item.querySelector('.gallery__img');
-      const capEl  = item.querySelector('.gallery__caption-title');
+      const img    = item.querySelector('.polaroid-img');
+      const capEl  = item.querySelector('.polaroid-caption');
       return { src: img.src, alt: img.alt, caption: capEl ? capEl.textContent.trim() : '' };
     });
 
@@ -338,22 +338,62 @@
 
     function openLightbox(index) {
       currentIndex = index;
+      const thumb = items[currentIndex].querySelector('.polaroid-img');
+      const thumbRect = thumb.getBoundingClientRect();
+      
       lbImg.src = images[currentIndex].src;
       lbImg.alt = images[currentIndex].alt;
       if (lbCaption) lbCaption.textContent = images[currentIndex].caption;
       updateCounter();
+      
       lightbox.hidden = false;
       document.body.style.overflow = 'hidden';
-      lbClose.focus();
+      
+      requestAnimationFrame(() => {
+        const lbRect = lbImg.getBoundingClientRect();
+        
+        const scaleX = thumbRect.width / lbRect.width;
+        const scaleY = thumbRect.height / lbRect.height;
+        const translateX = thumbRect.left + (thumbRect.width / 2) - (lbRect.left + (lbRect.width / 2));
+        const translateY = thumbRect.top + (thumbRect.height / 2) - (lbRect.top + (lbRect.height / 2));
+        
+        lbImg.style.transition = 'none';
+        lbImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY})`;
+        
+        requestAnimationFrame(() => {
+          lbImg.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          lbImg.style.transform = 'none';
+          lbClose.focus();
+        });
+      });
     }
 
     function closeLightbox() {
-      lightbox.hidden = true;
-      document.body.style.overflow = '';
+      if (lightbox.hidden) return;
+      
+      const thumb = items[currentIndex].querySelector('.polaroid-img');
+      const thumbRect = thumb.getBoundingClientRect();
+      const lbRect = lbImg.getBoundingClientRect();
+      
+      const scaleX = thumbRect.width / lbRect.width;
+      const scaleY = thumbRect.height / lbRect.height;
+      const translateX = thumbRect.left + (thumbRect.width / 2) - (lbRect.left + (lbRect.width / 2));
+      const translateY = thumbRect.top + (thumbRect.height / 2) - (lbRect.top + (lbRect.height / 2));
+      
+      lbImg.style.transition = 'transform 0.4s ease';
+      lbImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY})`;
+      
+      setTimeout(() => {
+        lightbox.hidden = true;
+        document.body.style.overflow = '';
+        lbImg.style.transition = 'none';
+        lbImg.style.transform = 'none';
+      }, 400);
     }
 
     function showImage(index) {
       currentIndex = (index + images.length) % images.length;
+      lbImg.style.transition = 'opacity 0.15s ease';
       lbImg.style.opacity = '0';
       setTimeout(() => {
         lbImg.src = images[currentIndex].src;
@@ -364,8 +404,6 @@
       }, 150);
     }
 
-    lbImg.style.transition = 'opacity 0.15s ease';
-
     items.forEach((item, i) => {
       item.addEventListener('click', () => openLightbox(i));
       item.setAttribute('role', 'button');
@@ -375,6 +413,33 @@
           e.preventDefault();
           openLightbox(i);
         }
+      });
+
+      const inner = item.querySelector('.polaroid-card__inner');
+      const glare = document.createElement('div');
+      glare.className = 'polaroid-glare';
+      if(inner) inner.appendChild(glare);
+
+      item.addEventListener('mousemove', (e) => {
+        if (window.matchMedia('(max-width: 900px)').matches) return;
+        item.classList.add('is-hovering');
+        
+        const rect = item.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+        
+        item.style.transform = `perspective(1000px) translateY(-15px) scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        glare.style.transform = `translate(${(x / rect.width) * 100 - 50}%, ${(y / rect.height) * 100 - 50}%)`;
+      });
+      
+      item.addEventListener('mouseleave', () => {
+        item.classList.remove('is-hovering');
+        item.style.transform = '';
       });
     });
 
@@ -393,6 +458,55 @@
       if (e.key === 'ArrowLeft')  showImage(currentIndex - 1);
       if (e.key === 'ArrowRight') showImage(currentIndex + 1);
     });
+  })();
+
+  /* ─── GALLERY MOBILE HELPER ─── */
+  (function galleryMobileHelper() {
+    const stack = $('.polaroid-stack');
+    const helper = $('.gallery-mobile-helper');
+    const pagination = $('#gallery-pagination');
+    const cards = $$('.polaroid-card', stack);
+    
+    if (!stack || !helper || !pagination || cards.length === 0) return;
+
+    let hasNudged = false;
+
+    stack.addEventListener('scroll', () => {
+      const stackRect = stack.getBoundingClientRect();
+      const stackCenter = stackRect.left + (stackRect.width / 2);
+      
+      let closestIndex = 0;
+      let minDistance = Infinity;
+      
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + (rect.width / 2);
+        const distance = Math.abs(stackCenter - cardCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = index;
+        }
+      });
+      
+      pagination.textContent = `${closestIndex + 1} / ${cards.length}`;
+    }, { passive: true });
+
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        helper.classList.add('is-visible');
+        if (!hasNudged && window.matchMedia('(max-width: 900px)').matches) {
+          hasNudged = true;
+          setTimeout(() => {
+            stack.classList.add('do-nudge');
+            setTimeout(() => {
+              stack.classList.remove('do-nudge');
+            }, 1300);
+          }, 800);
+        }
+      }
+    }, { threshold: 0.5 });
+    
+    obs.observe(stack);
   })();
 
   /* â”€â”€â”€ RSVP FORM â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -611,93 +725,10 @@
     imgs.forEach(img => obs.observe(img));
   })();
 
-  /* ─── PINNED HORIZONTAL SCROLL GALLERY ─── */
-  (function initPinnedGallery() {
-    const track = $('.gallery__scroll-track');
-    const sticky = $('.gallery__sticky-wrap');
-    const masonry = $('.gallery__masonry');
-    if (!track || !sticky || !masonry) return;
-
-    function isMobileGallery() {
-      return window.matchMedia('(max-width: 900px), (pointer: coarse)').matches;
-    }
-
-    function updateHeight() {
-      // Allow images to load/paint before calculating width
-      setTimeout(() => {
-        if (isMobileGallery()) {
-          track.style.height = 'auto';
-          sticky.style.position = 'static';
-          masonry.style.transform = 'none';
-          masonry.style.willChange = 'auto';
-          return;
-        }
-        const scrollWidth = masonry.scrollWidth;
-        const vh = window.innerHeight;
-        // The track height = viewport height + the amount we want to scroll horizontally
-        const hiddenWidth = scrollWidth - window.innerWidth;
-        
-        if (hiddenWidth > 0) {
-          track.style.height = `${vh + hiddenWidth}px`;
-        } else {
-          track.style.height = 'auto';
-        }
-      }, 300);
-    }
-
-    function onScroll() {
-      if (isMobileGallery()) return;
-      const trackRect = track.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const hiddenWidth = masonry.scrollWidth - window.innerWidth;
-      
-      if (hiddenWidth <= 0) return; // No need to scroll
-
-      // If the top of the track is above the viewport and the bottom is below the viewport
-      if (trackRect.top <= 0 && trackRect.bottom >= vh) {
-        // Calculate progress (0 to 1)
-        const progress = Math.abs(trackRect.top) / (trackRect.height - vh);
-        masonry.style.transform = `translate3d(-${progress * hiddenWidth}px, 0, 0)`;
-      } else if (trackRect.top > 0) {
-        masonry.style.transform = `translate3d(0, 0, 0)`;
-      } else if (trackRect.bottom < vh) {
-        masonry.style.transform = `translate3d(-${hiddenWidth}px, 0, 0)`;
-      }
-    }
-
-    // Initialize and add listeners
-    updateHeight();
-    window.addEventListener('resize', updateHeight);
-    window.addEventListener('scroll', () => {
-      requestAnimationFrame(onScroll);
-    }, { passive: true });
-    
-    // Also re-update height on image loads
-    const imgs = masonry.querySelectorAll('img');
-    imgs.forEach(img => {
-      if (!img.complete) {
-        img.addEventListener('load', updateHeight);
-      }
-    });
-  })();
 
 
-  /* ─── GALLERY MASONRY EQUALISE ─────────────── */
-  (function masonryLoad() {
-    const masonry = $('.gallery__masonry');
-    if (!masonry) return;
-    const imgs = $$('img', masonry);
-    let loaded = 0;
-    imgs.forEach(img => {
-      if (img.complete) { loaded++; }
-      else {
-        img.addEventListener('load', () => {
-          loaded++;
-          if (loaded === imgs.length) masonry.style.columnGap = masonry.style.columnGap;
-        });
-      }
-    });
-  })();
+
+
 
   /* â”€â”€â”€ HERO PARTICLES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   (function heroParticles() {
