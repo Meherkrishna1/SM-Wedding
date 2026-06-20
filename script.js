@@ -613,62 +613,9 @@
 
   /* ─── 3D HORIZONTAL SCROLL GALLERY (MOBILE) ─── */
   (function init3DHorizontalScroll() {
-    const scrollContainer = $('.gallery__sticky-wrap');
-    const items = $$('.gallery__item');
-    if (!scrollContainer || items.length === 0) return;
-
-    let isMobile = window.innerWidth <= 900;
-    let ticking = false;
-
-    function update3D() {
-      if (!isMobile) {
-        items.forEach(item => item.style.transform = '');
-        ticking = false;
-        return;
-      }
-
-      const containerRect = scrollContainer.getBoundingClientRect();
-      const containerCenter = containerRect.left + containerRect.width / 2;
-
-      items.forEach(item => {
-        const itemRect = item.getBoundingClientRect();
-        const itemCenter = itemRect.left + itemRect.width / 2;
-        
-        const dist = itemCenter - containerCenter;
-        
-        let normalizedDist = dist / (containerRect.width * 0.7);
-        normalizedDist = Math.max(-1, Math.min(1, normalizedDist));
-
-        // 3D Coverflow calculations
-        const rotateY = normalizedDist * 45; 
-        const scale = 1 - Math.abs(normalizedDist) * 0.12; 
-        const translateZ = -Math.abs(normalizedDist) * 120; 
-        
-        item.style.transform = `translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
-      });
-
-      ticking = false;
-    }
-
-    scrollContainer.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(update3D);
-        ticking = true;
-      }
-    }, { passive: true });
-
-    window.addEventListener('resize', () => {
-      isMobile = window.innerWidth <= 900;
-      if (!ticking) {
-        requestAnimationFrame(update3D);
-        ticking = true;
-      }
-    }, { passive: true });
-
-    // Ensure layout is settled before first calculation
-    setTimeout(() => {
-      requestAnimationFrame(update3D);
-    }, 100);
+    // 3D scrolling logic disabled in favor of native CSS horizontal scroll snapping
+    // which provides a much smoother, glitch-free experience on mobile devices.
+    return;
   })();
 
 
