@@ -621,6 +621,11 @@
     function updateHeight() {
       // Allow images to load/paint before calculating width
       setTimeout(() => {
+        if (window.innerWidth <= 900) {
+          track.style.height = '';
+          masonry.style.transform = '';
+          return;
+        }
         const scrollWidth = masonry.scrollWidth;
         const vh = window.innerHeight;
         // The track height = viewport height + the amount we want to scroll horizontally
@@ -635,6 +640,7 @@
     }
 
     function onScroll() {
+      if (window.innerWidth <= 900) return;
       const trackRect = track.getBoundingClientRect();
       const vh = window.innerHeight;
       const hiddenWidth = masonry.scrollWidth - window.innerWidth;
