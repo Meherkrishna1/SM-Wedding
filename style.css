@@ -4548,4 +4548,9 @@ body {
     flex: 0 0 80vw !important;
     height: 45vh !important;
   }
+  .gallery__item.reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
