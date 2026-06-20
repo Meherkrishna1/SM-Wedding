@@ -611,11 +611,62 @@
     imgs.forEach(img => obs.observe(img));
   })();
 
-  /* ─── 3D HORIZONTAL SCROLL GALLERY (MOBILE) ─── */
-  (function init3DHorizontalScroll() {
-    // 3D scrolling logic disabled in favor of native CSS horizontal scroll snapping
-    // which provides a much smoother, glitch-free experience on mobile devices.
-    return;
+  /* ─── PINNED HORIZONTAL SCROLL GALLERY ─── */
+  (function initPinnedGallery() {
+    const track = $('.gallery__scroll-track');
+    const sticky = $('.gallery__sticky-wrap');
+    const masonry = $('.gallery__masonry');
+    if (!track || !sticky || !masonry) return;
+
+    function updateHeight() {
+      // Allow images to load/paint before calculating width
+      setTimeout(() => {
+        const scrollWidth = masonry.scrollWidth;
+        const vh = window.innerHeight;
+        // The track height = viewport height + the amount we want to scroll horizontally
+        const hiddenWidth = scrollWidth - window.innerWidth;
+        
+        if (hiddenWidth > 0) {
+          track.style.height = `${vh + hiddenWidth}px`;
+        } else {
+          track.style.height = 'auto';
+        }
+      }, 300);
+    }
+
+    function onScroll() {
+      const trackRect = track.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const hiddenWidth = masonry.scrollWidth - window.innerWidth;
+      
+      if (hiddenWidth <= 0) return; // No need to scroll
+
+      // If the top of the track is above the viewport and the bottom is below the viewport
+      if (trackRect.top <= 0 && trackRect.bottom >= vh) {
+        // Calculate progress (0 to 1)
+        const progress = Math.abs(trackRect.top) / (trackRect.height - vh);
+        masonry.style.transform = `translate3d(-${progress * hiddenWidth}px, 0, 0)`;
+      } else if (trackRect.top > 0) {
+        masonry.style.transform = `translate3d(0, 0, 0)`;
+      } else if (trackRect.bottom < vh) {
+        masonry.style.transform = `translate3d(-${hiddenWidth}px, 0, 0)`;
+      }
+    }
+
+    // Initialize and add listeners
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(onScroll);
+    }, { passive: true });
+    
+    // Also re-update height on image loads
+    const imgs = masonry.querySelectorAll('img');
+    imgs.forEach(img => {
+      if (!img.complete) {
+        img.addEventListener('load', updateHeight);
+      }
+    });
   })();
 
 
