@@ -618,12 +618,18 @@
     const masonry = $('.gallery__masonry');
     if (!track || !sticky || !masonry) return;
 
+    function isMobileGallery() {
+      return window.matchMedia('(max-width: 900px), (pointer: coarse)').matches;
+    }
+
     function updateHeight() {
       // Allow images to load/paint before calculating width
       setTimeout(() => {
-        if (window.innerWidth <= 900) {
-          track.style.height = '';
-          masonry.style.transform = '';
+        if (isMobileGallery()) {
+          track.style.height = 'auto';
+          sticky.style.position = 'static';
+          masonry.style.transform = 'none';
+          masonry.style.willChange = 'auto';
           return;
         }
         const scrollWidth = masonry.scrollWidth;
@@ -640,7 +646,7 @@
     }
 
     function onScroll() {
-      if (window.innerWidth <= 900) return;
+      if (isMobileGallery()) return;
       const trackRect = track.getBoundingClientRect();
       const vh = window.innerHeight;
       const hiddenWidth = masonry.scrollWidth - window.innerWidth;
